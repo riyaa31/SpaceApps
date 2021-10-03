@@ -1,22 +1,42 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Typography } from '@material-ui/core';
+import './App.css';
+import * as ReactBootStrap from "react-bootstrap";
+import Aboutus from "./Components/Aboutus";
+import Homepage from "./Components/Homepage";
+import FutureData from "./Components/FutureData";
+import NavBar from "./Components/Navbar"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-function Homepage() {
-    return(
-        <div className="w-full" style={{ paddingBottom: 100 }}>
-            <Helmet>
-                <title>Risk Free</title>
-            </Helmet>
 
-            <div className="flex flex-col md:flex-row sm:p-8 container">
-                <div className="flex flex-1 flex-col min-w-0">
-                    <Typography className="pl-24" variant="h4">
-                        Risk Free
-                    </Typography>
-                    </div>
-                    </div>
-                    </div>
-    )
+function App() {
+  return (
+    <div className="App">
+        <Router>
+        <NavBar />
+ 
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/homepage" component={Homepage}>
+              <Homepage />
+          </Route>
+          
+          <Route path="/futuredata" component={FutureData}>
+            <FutureData />
+          </Route>
+          <Route path="/aboutus" component={Aboutus}>
+            <Aboutus />
+          </Route>
+        </Switch>
+    </Router>
+    </div>
+  );
 }
-export default Homepage
+
+export default App;
