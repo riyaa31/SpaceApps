@@ -4,4 +4,4 @@ Open terminal and type:
 git clone https://github.com/riyaa31/SpaceApps.git
 
 cd SpaceApps
-
+cd riskfree
