@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, Polyline, InfoWindow, Circle } from 'react-google-maps';
+import * as data from './landslides.json'
 
 function Map() {
+    const [one, setOne] = useState(null)
+    const latitudes = data.default[0].latitude // 1
+    const longitudes = data.default[0].longitude // 2
+    const size = data.default[0].landslide_size // 3
+    const type = data.default[0].landslide_type // 4
+    const trigger = data.default[0].trigger // 5
+    const population = data.default[0].population // 6
+    const date = data.default[0].Date // 7
+    const list = []
+    for (let i = 0; i < 54; i++) {
+        list.push([latitudes[i], longitudes[i], size[i], type[i], trigger[i], population[i], date[i]])
+      }
+      console.log(list)
     return(
-        <GoogleMap defaultZoom={6} defaultCenter={{lat: 41.53, lng: 12.30}}>
-            <Marker
+        <div><GoogleMap defaultZoom={6} defaultCenter={{lat: 41.53, lng: 12.30}}>
+            {list.map((slide) => <Marker
                 key={1}
-                position={{ lat: 45.26, lng: 12.20 }}
+                position={{ lat: slide[0], lng: slide[1] }}
                 title="Venice"
-                icon={'https://maps.google.com/mapfiles/ms/icons/green-dot.png' }
-                // onClick={this.selectPin.bind(this, value.id, 'pickup', value)}
-            />
-            <Marker
-                key={1}
-                position={{ lat: 43.46, lng: 11.15 }}
-                title="Vatican City"
-                icon={'https://maps.google.com/mapfiles/ms/icons/blue-dot.png' }
-                // onClick={this.selectPin.bind(this, value.id, 'pickup', value)}
-            />
-        </GoogleMap>
+                icon={ slide[2] === 'Medium' ? 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png' : slide[2] === 'Large' ? 'https://maps.google.com/mapfiles/ms/icons/red-dot.png' : 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'}
+                onClick={() => setOne(slide)}
+            />)}
+            {one && (<InfoWindow position={{ lat: one[0], lng: one[1] }}>
+                    <div>
+                        <p>Type: {one[3]} </p>
+                        <p>Size: {one[2]} </p>
+                        <p>Trigger: {one[4]}</p>
+                        <p>Population: {one[5]}</p>
+                    </div>
+                </InfoWindow>)}
+        </GoogleMap></div>
+        
     )
 }
 
