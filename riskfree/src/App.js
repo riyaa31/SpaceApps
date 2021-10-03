@@ -6,6 +6,7 @@ import Aboutus from "./Components/Aboutus";
 import FutureData from "./Components/FutureData";
 import Homepage from "./Components/Homepage";
 import NavBar from "./Components/Navbar"
+import Main from './Components/Map';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +16,7 @@ import {
 
 
 function App() {
+  
   return (
     <div className="App">
         <Router>
@@ -26,6 +28,9 @@ function App() {
         <Switch>
           <Route path="/aboutus" component={Aboutus}>
               <Aboutus />
+          </Route>
+          <Route path="/map" component={Main}>
+              <Main />
           </Route>
           <Route path="/futuredata" component={FutureData}>
             <FutureData />

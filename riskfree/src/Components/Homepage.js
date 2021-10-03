@@ -3,7 +3,7 @@ import React from 'react';
 const Feature = () => {
     return(
         <div className="App">
-            <h1>Homepage</h1>
+            <h1>Risk Free</h1>
         </div>
     )
 }

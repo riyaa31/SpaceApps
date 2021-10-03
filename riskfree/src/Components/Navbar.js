@@ -16,12 +16,13 @@ const NavBar = () => {
     <Link to="/homepage">
     <ReactBootStrap.Nav.Link href="#homepage">Homepage</ReactBootStrap.Nav.Link>
     </Link>
-      <ReactBootStrap.NavDropdown title="Predictor" id="collasible-nav-dropdown">
-        <ReactBootStrap.NavDropdown.Item href="#maps">Maps</ReactBootStrap.NavDropdown.Item>
+    <Link to='/map'>
+      <ReactBootStrap.Nav.Link href="Predictor">Predictor</ReactBootStrap.Nav.Link>
+        </Link>
+        {/* <ReactBootStrap.NavDropdown.Link href="#maps">Maps</ReactBootStrap.NavDropdown.Link>
         <ReactBootStrap.NavDropdown.Item href="#graphs">Graphs</ReactBootStrap.NavDropdown.Item>
         <ReactBootStrap.NavDropdown.Divider />
-        <ReactBootStrap.NavDropdown.Item href="#action/3.4">Separated link</ReactBootStrap.NavDropdown.Item>
-      </ReactBootStrap.NavDropdown>
+        <ReactBootStrap.NavDropdown.Item href="#action/3.4">Separated link</ReactBootStrap.NavDropdown.Item> */}
     </ReactBootStrap.Nav>
     <ReactBootStrap.Nav>
     <Link to="/futuredata">
